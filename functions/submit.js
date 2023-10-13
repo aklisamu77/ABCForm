@@ -2,6 +2,10 @@
  * POST /submit
  */
 export async function onRequestPost(context) {
+  return new Response(JSON.stringify({ message: 'Hi this is me...!', result }), {
+    headers: { 'content-type': 'text/json' },
+    status: 200,
+  });
   try {
     let input = await context.request.formData();
 
