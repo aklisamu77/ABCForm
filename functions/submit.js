@@ -28,7 +28,7 @@ export async function onRequestPost(context) {
 
     // validate email 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (emailRegex.test(output["email"])) {
+    if (!emailRegex.test(output["email"])) {
       return new Response(`Error: Email not correct.`, { status: 400 });
     }
     
