@@ -3,6 +3,14 @@
  */
 export async function onRequestPost(context) {
   try {
+
+    // 
+    var input = document.getElementById("honeypot");
+    if (input.value !== "") {
+       
+      return new Response(`Error: The honeypot field must be empty.`, { status: 400 });
+    }
+
     let input = await context.request.formData();
 
     // Convert FormData to JSON
