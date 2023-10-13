@@ -5,12 +5,7 @@ export async function onRequestPost(context) {
   try {
 
     // 
-    var honeypot = document.getElementById("honeypot");
-    if (honeypot.value !== "") {
-       
-      return new Response(`Error: The honeypot field must be empty.`, { status: 400 });
-    }
-
+    
     let input = await context.request.formData();
 
     // Convert FormData to JSON
@@ -23,6 +18,14 @@ export async function onRequestPost(context) {
         output[key] = [].concat(tmp, value);
       }
     }
+
+    var honeypot = document.getElementById("honeypot");
+    if (output[honeypot] !== "") {
+       
+      return new Response(`Error: The honeypot field must be empty.`, { status: 400 });
+    }
+
+    return new Response(output);
 
     const options = {
         method: 'POST',
