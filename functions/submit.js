@@ -19,8 +19,7 @@ export async function onRequestPost(context) {
       }
     }
 
-    var honeypot = document.getElementById("honeypot");
-    if (output[honeypot] !== "") {
+    if (output["honeypot"] !== "") {
        
       return new Response(`Error: The honeypot field must be empty.`, { status: 400 });
     }
