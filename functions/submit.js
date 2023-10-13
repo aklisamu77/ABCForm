@@ -19,12 +19,19 @@ export async function onRequestPost(context) {
       }
     }
 
+
+    // validate honeypot
     if (output["honeypot"] !== "") {
        
       return new Response(`Error: The honeypot field must be empty.`, { status: 400 });
     }
 
-    return new Response(output);
+    // validate email 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (emailRegex.test(output["email"])) {
+      return new Response(`Error: Email not correct.`, { status: 400 });
+    }
+    
 
     const options = {
         method: 'POST',
