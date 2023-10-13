@@ -1,0 +1,56 @@
+<section id="form">
+	<div class="container mx-auto text-bg-gradient max-w-screen-lg bg-green-light my-8 py-8 px-5 md:px-8 mb-40">
+		<div class="lg:max-w-screen-lg mx-auto px-2">
+			<h2>Nachhaltigkeit zum Vorzeigen: Siegel beantragen</h2>
+			<form id="contact-form" method="POST" action="http://127.0.0.1:8787/submit">
+				<div class="flex items-start flex-wrap">
+					<div class="my-4 mr-8">
+						<label for="name">Name</label><br />
+						<input type="text" id="name" name="name">
+					</div>
+					<div class="my-4 mr-8">
+						<label for="website">Website *</label><br />
+						<input type="text" id="website" name="website" required>
+					</div>
+					<div class="my-4 mr-8">
+						<label for="email">E-Mail *</label><br />
+						<input type="email" id="email" name="email" required>
+					</div>
+				</div>
+				<fieldset required>
+					<legend class="my-4">Was möchtest du tun? *</legend>
+					<div class="mb-2">
+						<label class="block">
+							<input type="checkbox" name="whatToDo" value="pruefung">
+							<span>
+								Prüfung
+							</span>
+						</label>
+					</div>
+					<div class="mb-2">
+						<label class="block">
+							<input type="checkbox" name="whatToDo" value="beratung">
+							<span>
+								Beratung
+							</span>
+						</label>
+					</div>
+					<div class="mb-2">
+						<label class="block">
+							<input type="checkbox" name="whatToDo" value="sonstiges">
+							<span>
+								Sonstiges
+							</span>
+						</label>
+					</div>
+				</fieldset>
+				<div class="flex flex-wrap items-end">
+					<div>
+						<input class="mt-8 ml-8" type="submit" value="Jetzt anfragen">
+					</div>
+				</div>
+			</form>
+			<p class="max-w-screen-sm text-sm mt-6">Sendest du eine Anfrage, erteilst du die Einwilligung zur Bearbeitung deiner personenbezogenen Daten im Rahmen unserer <a href="<% site.url %>/datenschutz/" target="_blank">Datenschutzerklärung</a>. Du kannst die Einwilligung jederzeit zurückziehen.</p>
+		</div>
+	</div>
+</section>
