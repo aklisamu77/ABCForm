@@ -33,7 +33,7 @@ export async function onRequestPost(context) {
 
     // check spam
     const apiKey = "qFYe6srB3AdnztutDeQPCmhe9w4k3kMlKAfOYs0G";
-    ip = await getIPAddress();
+    const ip = await getIPAddress();
 
     const requestOptions = {
       method: "POST",
