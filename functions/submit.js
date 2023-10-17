@@ -50,10 +50,9 @@ export async function onRequestPost(context) {
    api_call =  await  fetch("https://api.oopspam.com/v1/spamdetection", requestOptions)
       .then((response) => response.json())
       .then((data) => {
+        
+        throw new Error( "score : "+data.score); 
          
-        alert(data.score); 
-        console.log("Score:", data.score);
-        console.log("Details:", data.details);
       })
       .catch((error) => {
         throw new Error(error);
