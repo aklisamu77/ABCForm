@@ -56,7 +56,7 @@ export async function onRequestPost(context) {
         console.log("Details:", data.details);
       })
       .catch((error) => {
-        throw new Error('Error');
+        throw new Error(error);
       });
 
     const options = {
