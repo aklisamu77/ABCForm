@@ -59,15 +59,14 @@ export async function onRequestPost(context) {
       requestOptions
     ).then((response) => response.json()).then((data) => {
         
-        if (parseInt(data.Score) > 2) 
-            throw new Error(`Error: you are spam `);
-        else 
-              throw new Error(`score.`+data.Score);
+        if (parseInt(data.Score) > 3) 
+            throw new Error();
+        
       }).catch((error) => {
         throw new Error(error);
       });
 
-      throw new Error(`Error: Sto me here  `);
+      
         
     const options = {
       method: "POST",
