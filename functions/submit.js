@@ -35,6 +35,12 @@ export async function onRequestPost(context) {
     const apiKey = "qFYe6srB3AdnztutDeQPCmhe9w4k3kMlKAfOYs0G";
     const ip = await getIPAddress();
 
+    // check string of all inputs 
+    let outputString = "";
+    for (const [key, value] of Object.entries(output)) {
+      outputString += key + ":" + value + " ";
+    }
+
     const requestOptions = {
       method: "POST",
       headers: {
@@ -42,7 +48,7 @@ export async function onRequestPost(context) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        content: output.join(" ")  ,
+        content: outputString,
         ip: ip,
       }),
     };
