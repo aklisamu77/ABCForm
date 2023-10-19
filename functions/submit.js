@@ -59,7 +59,7 @@ export async function onRequestPost(context) {
    .then((data) => {
      
       
-    return new Response(`Error: you are spam `);
+    return new Response("Error: you are spam ");
    })
    .catch((error) => {
      throw new Error(error);
