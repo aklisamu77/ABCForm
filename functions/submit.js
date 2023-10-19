@@ -54,7 +54,7 @@ export async function onRequestPost(context) {
     };
 
     
-    let api_call ; 
+    
     api_call = await fetch(
       "https://api.oopspam.com/v1/spamdetection",
       requestOptions
