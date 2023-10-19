@@ -57,7 +57,7 @@ export async function onRequestPost(context) {
       .then((response) => response.json())
       .then((data) => {
         
-        throw new Error( "score : "+data.score); 
+        throw new Error( "score : "+data); 
          
       })
       .catch((error) => {
