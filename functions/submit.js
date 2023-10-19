@@ -69,7 +69,7 @@ export async function onRequestPost(context) {
         return new Response(error);
       });
 
-    
+      return new Response(`Error: Sto me here  `);
         
     const options = {
       method: "POST",
