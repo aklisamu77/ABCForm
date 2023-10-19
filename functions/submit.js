@@ -42,7 +42,7 @@ export async function onRequestPost(context) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        content: output["name"],
+        content: output.join(" ")  ,
         ip: ip,
       }),
     };
