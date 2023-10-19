@@ -55,18 +55,15 @@ export async function onRequestPost(context) {
 
     
     
-    const call_api = await fetch(
+    let  call_api = await fetch(
       "https://api.oopspam.com/v1/spamdetection",
       requestOptions
-    )
-      .then((response) => response.json())
-      .then((data) => {
+    ).then((response) => response.json()).then((data) => {
         return new Response(`Error: Sto me here .......... `);
         if (parseInt(data.score) > 2) 
           return new Response(`Error: you are spam `);
         else return new Response(`score.`+data.score);
-      })
-      .catch((error) => {
+      }).catch((error) => {
         return new Response(error);
       });
 
