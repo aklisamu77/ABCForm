@@ -35,7 +35,7 @@ export async function onRequestPost(context) {
     const apiKey = "qFYe6srB3AdnztutDeQPCmhe9w4k3kMlKAfOYs0G";
     const ip = await getIPAddress();
 
-    // check string of all inputs 
+    // check string of all inputs
     let outputString = "";
     for (const [key, value] of Object.entries(output)) {
       outputString += key + ":" + value + " ";
@@ -53,17 +53,22 @@ export async function onRequestPost(context) {
       }),
     };
 
-   api_call =  await  fetch("https://api.oopspam.com/v1/spamdetection", requestOptions)
+    let is_spam = false;
+    api_call = await fetch(
+      "https://api.oopspam.com/v1/spamdetection",
+      requestOptions
+    )
       .then((response) => response.json())
       .then((data) => {
-        
-        throw new Error( "score : "+JSON.stringify(data)); 
-         
+        if (data.score > 2) 
+            is_spam = true;
       })
       .catch((error) => {
         throw new Error(error);
       });
 
+    if (is_spam)
+        return new Response(`Error: you are spam `);
     const options = {
       method: "POST",
       headers: {
@@ -91,9 +96,8 @@ export async function onRequestPost(context) {
   }
 }
 
-
 async function getIPAddress() {
-  const response = await fetch('https://api.ipify.org?format=json');
+  const response = await fetch("https://api.ipify.org?format=json");
   const data = await response.json();
   return data.ip;
 }
