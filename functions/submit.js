@@ -44,7 +44,7 @@ export async function onRequestPost(context) {
     const requestOptions = {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        "X-Api-Key": apiKey,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
