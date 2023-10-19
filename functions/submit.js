@@ -66,7 +66,7 @@ export async function onRequestPost(context) {
         else return new Response(`score.`+data.score);
       })
       .catch((error) => {
-        throw new Error(error);
+        return new Response(error);
       });
 
     
