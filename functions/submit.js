@@ -59,10 +59,7 @@ export async function onRequestPost(context) {
    .then((data) => {
      
       
-     if ( data.score > 2) 
-          return new Response(`Error: you are spam `);
-      else return new Response(`score.`+data.score);
-      
+    return new Response(`Error: you are spam `);
    })
    .catch((error) => {
      throw new Error(error);
