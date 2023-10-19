@@ -54,30 +54,20 @@ export async function onRequestPost(context) {
     };
 
     
-   api_call =  await  fetch("https://api.oopspam.com/v1/spamdetection", requestOptions)
-   .then((response) => response.json())
-   .then((data) => {
-     
-      
-    throw new Error("Error: you are spam ");
-   })
-   .catch((error) => {
-     throw new Error(error);
-   });
-    
     let  call_api = await fetch(
       "https://api.oopspam.com/v1/spamdetection",
       requestOptions
     ).then((response) => response.json()).then((data) => {
-        return new Response(`Error: Sto me here .......... `);
+        
         if (parseInt(data.score) > 2) 
-          return new Response(`Error: you are spam `);
-        else return new Response(`score.`+data.score);
+            throw new Error(`Error: you are spam `);
+        else 
+              throw new Error(`score.`+data.score);
       }).catch((error) => {
-        return new Response(error);
+        throw new Error(error);
       });
 
-      return new Response(`Error: Sto me here  `);
+      throw new Error(`Error: Sto me here  `);
         
     const options = {
       method: "POST",
