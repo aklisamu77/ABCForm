@@ -61,14 +61,14 @@ export async function onRequestPost(context) {
       .then((response) => response.json())
       .then((data) => {
         if (data.score > 2) 
-            is_spam = true;
+          return new Response(`Error: you are spam `);
       })
       .catch((error) => {
         throw new Error(error);
       });
 
-    if (is_spam)
-        return new Response(`Error: you are spam `);
+    
+        
     const options = {
       method: "POST",
       headers: {
