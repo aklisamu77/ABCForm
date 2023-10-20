@@ -53,7 +53,7 @@ export async function onRequestPost(context) {
       }),
     };
 
-    
+    /*
     let  call_api = await fetch(
       "https://api.oopspam.com/v1/spamdetection",
       requestOptions
@@ -65,9 +65,16 @@ export async function onRequestPost(context) {
       }).catch((error) => {
         throw new Error(error);
       });
-
+*/
+    const wordsArray = ["Amazing","Act","Now","Cash","bonus","Click","Confidential","delete","Earn","extra","consultation","gift","Free",
+    "hosting","investment","membership","money","Guaranteed","Increase","sales","Incredible","deal","Limited","time","Lowest","price","Make","New",
+    "Order","Satisfaction","Urgent","supplies","Winner", "selected","100%"];
       
-        
+    const matchingSpamCount = await countMatchingWords(outputString, wordsArray);
+    if(matchingSpamCount > 3)
+        return new Response("count spam : "+matchingSpamCount);
+
+    return new Response("count Not spam : "+matchingSpamCount);
     const options = {
       method: "POST",
       headers: {
@@ -99,4 +106,17 @@ async function getIPAddress() {
   const response = await fetch("https://api.ipify.org?format=json");
   const data = await response.json();
   return data.ip;
+}
+
+async function countMatchingWords(string, wordsArray) {
+  const stringWords = string.toLowerCase().split(' ');
+  let matchingWordsCount = 0;
+
+  for (const word of stringWords) {
+    if (wordsArray.includes(word.toLowerCase())) {
+      matchingWordsCount++;
+    }
+  }
+
+  return matchingWordsCount;
 }
