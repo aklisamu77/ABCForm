@@ -66,9 +66,10 @@ export async function onRequestPost(context) {
         throw new Error(error);
       });
 */
-    const wordsArray = ["Amazing","Act","Now","Cash","bonus","Click","Confidential","delete","Earn","extra","consultation","gift","Free",
-    "hosting","investment","membership","money","Guaranteed","Increase","sales","Incredible","deal","Limited","time","Lowest","price","Make","New",
-    "Order","Satisfaction","Urgent","supplies","Winner", "selected","100%"];
+    const wordsArray = ["amazing", "act", "now", "cash", "bonus", "click", "confidential", "delete", "earn", "extra", "consultation", "gift", "free", 
+    "hosting", "investment", "membership", "money", "guaranteed", "increase", "sales", "incredible", "deal", "limited", "time", "lowest", "price", "make",
+     "new", "order", "satisfaction", "urgent", "supplies", "winner", "selected", "100%"];
+
       
     const matchingSpamCount = await countMatchingWords(outputString, wordsArray);
     if(matchingSpamCount > 3)
